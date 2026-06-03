@@ -1,0 +1,11 @@
+{
+  "name": "@scandalorian/theme",
+  "private": true,
+  "main": "./src/theme.ts",
+  "exports": {
+    ".": "./src/theme.ts"
+  },
+  "peerDependencies": {
+    "@mantine/core": "catalog:"
+  }
+}

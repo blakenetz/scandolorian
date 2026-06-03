@@ -1,9 +1,9 @@
+import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
+import { theme } from '@scandalorian/theme'
+import '@mantine/core/styles.css';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import '@mantine/core/styles.css';
-
-import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +35,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className="min-h-full flex flex-col">
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider theme={theme}>{children}</MantineProvider>
       </body>
     </html>
   );
