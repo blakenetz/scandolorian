@@ -1,0 +1,18 @@
+{
+  "name": "scandolorian",
+  "version": "1.0.0",
+  "description": "Get the dirt on all your favorite Star Wars characters",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "blake netzeband (https://blakenetzeband.com) <blake.netzeband@gmail.com>",
+  "license": "UNLICENSED",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.0.8",
+      "onFail": "download"
+    }
+  },
+  "type": "module"
+}
