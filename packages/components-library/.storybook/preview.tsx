@@ -16,7 +16,7 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story, context) => {
+    (Story, _context) => {
       return (
         <MantineProvider
           theme={theme}
