@@ -8,8 +8,8 @@ const config: Config = {
   ],
 
   moduleNameMapper: {
-    '^@scandolorian/ui(.*)$': '<rootDir>/packages/components-library/src$1',
-    '^@scandolorian/testing(.*)$':
+    '^@scandalorian/ui(.*)$': '<rootDir>/packages/components-library/src$1',
+    '^@scandalorian/testing(.*)$':
       '<rootDir>/packages/testing/src$1',
   },
 

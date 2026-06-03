@@ -265,7 +265,7 @@ importers:
       '@mantine/hooks':
         specifier: 'catalog:'
         version: 9.2.2(react@19.2.4)
-      '@scandolorian/ui':
+      '@scandalorian/ui':
         specifier: workspace:*
         version: link:../../packages/components-library
       next:
