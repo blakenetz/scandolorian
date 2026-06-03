@@ -7,7 +7,9 @@ const config: StorybookConfig = {
   "addons": [
     "@chromatic-com/storybook",
     "@storybook/addon-vitest",
-    "@storybook/addon-mcp"
+    "@storybook/addon-mcp",
+    '@storybook/addon-essentials',
+    '@storybook/addon-themes'
   ],
   "framework": "@storybook/react-vite"
 };

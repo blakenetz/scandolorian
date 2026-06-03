@@ -19,6 +19,7 @@
     "@eslint/js": "^10.0.1",
     "@mantine/core": "catalog:",
     "@mantine/hooks": "catalog:",
+    "@scandalorian/theme": "workspace:*",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
