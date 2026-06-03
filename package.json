@@ -2,8 +2,10 @@
   "name": "scandolorian",
   "version": "1.0.0",
   "description": "Get the dirt on all your favorite Star Wars characters",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm -r --if-present run dev",
+    "build": "pnpm -r --if-present run build"
   },
   "author": "blake netzeband (https://blakenetzeband.com) <blake.netzeband@gmail.com>",
   "license": "UNLICENSED",
@@ -14,5 +16,13 @@
       "onFail": "download"
     }
   },
-  "type": "module"
+  "dependencies": {
+    "@mantine/core": "catalog:",
+    "@mantine/hooks": "catalog:"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.15",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1"
+  }
 }
