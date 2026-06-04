@@ -2,10 +2,20 @@
   "name": "@scandalorian/ui",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsc -b && vite build",
+    "build": "tsdown",
     "build:storybook": "storybook build"
   },
   "devDependencies": {
@@ -25,6 +35,8 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "storybook": "^10.4.2",
+    "tsdown": "^0.22.1",
+    "unrun": "^0.3.0",
     "vite": "^8.0.12",
     "vitest": "^4.1.8"
   },
