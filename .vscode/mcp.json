@@ -1,8 +1,13 @@
 {
   "servers": {
     "mantine": {
-      "command": "npx",
-      "args": ["-y", "@mantine/mcp-server"]
+      "command": "pnpm",
+      "args": ["dlx", "@mantine/mcp-server"],
+      
+    },
+    "chrome-devtools": {
+      "command": "pnpm",
+      "args": ["dlx", "chrome-devtools-mcp@latest"]
     }
   }
 }

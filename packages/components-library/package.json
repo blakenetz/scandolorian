@@ -4,30 +4,29 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "storybook dev -p 6006",
     "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build:storybook": "storybook build"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.2.1",
     "@mantine/core": "catalog:",
     "@mantine/hooks": "catalog:",
     "@scandalorian/theme": "workspace:*",
+    "@storybook/addon-mcp": "^0.6.0",
+    "@storybook/addon-themes": "^10.4.2",
+    "@storybook/addon-vitest": "^10.4.2",
+    "@storybook/react-vite": "^10.4.2",
     "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/browser-playwright": "^4.1.8",
+    "@vitest/coverage-v8": "^4.1.8",
     "globals": "^17.6.0",
+    "playwright": "^1.60.0",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "vite": "^8.0.12",
     "storybook": "^10.4.2",
-    "@storybook/react-vite": "^10.4.2",
-    "@chromatic-com/storybook": "^5.2.1",
-    "@storybook/addon-vitest": "^10.4.2",
-    "@storybook/addon-mcp": "^0.6.0",
-    "vitest": "^4.1.8",
-    "playwright": "^1.60.0",
-    "@vitest/browser-playwright": "^4.1.8",
-    "@vitest/coverage-v8": "^4.1.8"
+    "vite": "^8.0.12",
+    "vitest": "^4.1.8"
   },
   "peerDependencies": {
     "@mantine/core": "catalog:",
