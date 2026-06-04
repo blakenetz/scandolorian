@@ -1,0 +1,50 @@
+{
+  "name": "@scandalorian/ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "tsdown",
+    "build:storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.2.1",
+    "@mantine/core": "catalog:",
+    "@mantine/hooks": "catalog:",
+    "@scandalorian/theme": "workspace:*",
+    "@storybook/addon-mcp": "^0.6.0",
+    "@storybook/addon-themes": "^10.4.2",
+    "@storybook/addon-vitest": "^10.4.2",
+    "@storybook/react-vite": "^10.4.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/browser-playwright": "^4.1.8",
+    "@vitest/coverage-v8": "^4.1.8",
+    "globals": "^17.6.0",
+    "playwright": "^1.60.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "storybook": "^10.4.2",
+    "tsdown": "^0.22.1",
+    "unrun": "^0.3.0",
+    "vite": "^8.0.12",
+    "vitest": "^4.1.8"
+  },
+  "peerDependencies": {
+    "@mantine/core": "catalog:",
+    "@mantine/hooks": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  }
+}

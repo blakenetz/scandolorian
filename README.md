@@ -1,2 +1,5 @@
-# scandolorian
-Get the dirt on all your favorite Star Wars characters
+# The Scandalorian
+
+The hottest gossip across the Star Wars galaxy
+
+

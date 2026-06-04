@@ -1,0 +1,32 @@
+{
+  "name": "scandalorian",
+  "version": "1.0.0",
+  "description": "Get the dirt on all your favorite Star Wars characters",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r --if-present run dev",
+    "build": "pnpm -r --if-present run build",
+    "lint": "oxlint"
+  },
+  "author": "blake netzeband (https://blakenetzeband.com) <blake.netzeband@gmail.com>",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@11.5.1",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "oxfmt": "^0.53.0",
+    "oxlint": "^1.68.0",
+    "postcss": "^8.5.15",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
+    "ts-jest": "^29.4.11",
+    "typescript": "^6.0.3"
+  }
+}
