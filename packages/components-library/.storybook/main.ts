@@ -1,15 +1,20 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  "stories": [
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
-  ],
-  "addons": [
+  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [
     "@chromatic-com/storybook",
     "@storybook/addon-vitest",
     "@storybook/addon-mcp",
-    '@storybook/addon-themes'
+    "@storybook/addon-themes",
   ],
-  "framework": "@storybook/react-vite"
+  framework: "@storybook/react-vite",
+  viteFinal: async (config) => {
+    config.optimizeDeps = {
+      ...config.optimizeDeps,
+      exclude: [...(config.optimizeDeps?.exclude ?? []), "@scandalorian/theme", "@scandalorian/ui"],
+    };
+    return config;
+  },
 };
 export default config;

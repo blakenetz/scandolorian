@@ -6,7 +6,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs"
+      "source": "./src/index.ts",
+      "import": "./src/index.ts"
     }
   },
   "main": "./dist/index.mjs",
@@ -46,5 +47,8 @@
     "@mantine/hooks": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
+  },
+  "dependencies": {
+    "@tsdown/css": "^0.22.2"
   }
 }
