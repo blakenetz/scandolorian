@@ -1,8 +1,10 @@
-import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
-import { theme } from '@scandalorian/theme'
-import '@mantine/core/styles.css';
+import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from "@mantine/core";
+import "@mantine/core/styles.css";
+import { theme } from "@scandalorian/theme";
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./components/header";
+
 
 
 export const metadata: Metadata = {
@@ -16,16 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-full antialiased"
-      {...mantineHtmlProps}
-    >
+    <html lang="en" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript />
       </head>
-      <body className="min-h-full flex flex-col">
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+      <body style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+        <MantineProvider theme={theme}>
+          <Header />
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );

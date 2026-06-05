@@ -1,9 +1,10 @@
 {
-  "cSpell.words": [
-    "Scandalorian",
-    "Scandalorian"
-  ],
+  "cSpell.words": ["Scandalorian", "Scandalorian"],
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file"
+  "editor.formatOnSaveMode": "file",
+  "cssVariables.lookupFiles": [
+    "**/node_modules/@mantine/core/**/*.css",
+    "**/node_modules/postcss-preset-mantine/**/*.css"
+  ]
 }

@@ -4,7 +4,7 @@
   "description": "Get the dirt on all your favorite Star Wars characters",
   "type": "module",
   "scripts": {
-    "dev": "pnpm -r --if-present run dev",
+    "dev": "pnpm -r --parallel run dev",
     "build": "pnpm -r --if-present run build",
     "lint": "oxlint"
   },
