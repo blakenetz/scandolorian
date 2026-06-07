@@ -1,23 +1,16 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { observer } from "mobx-react-lite";
+import { Suspense } from "react";
+import { Skeleton } from "@mantine/core";
 import { Spotlight as UiSpotlight } from "@scandalorian/ui";
-import { useStore } from "@/stores/StoreProvider";
 import type { SwapiKey } from "@/stores/swapiStore";
-import { getImageFromWikipedia } from "@/utils";
+import { getSpotlight } from "@/stores/fetchInitialCache";
+
+import SpotlightImage from "./SpotlightImage";
 
 interface SpotlightProps {
   entity: SwapiKey;
 }
 
-interface Copy {
-  headline: string;
-  content: string[];
-}
-
-function getCopy(entity: SwapiKey, name: string): Copy {
+export function getCopy(entity: SwapiKey, name: string) {
   switch (entity) {
     case "people":
       return {
@@ -58,39 +51,19 @@ function getCopy(entity: SwapiKey, name: string): Copy {
   }
 }
 
-function Spotlight({ entity }: SpotlightProps) {
-  const store = useStore();
-  const [imageUrl, setImageUrl] = useState<string>();
-
-  const id = store.spotlight?.[entity];
-  const value = id ? store.getEntity(entity, id) : undefined;
-  const name = (typeof value === "string" ? value : value?.name) || "This week's star";
-
+export default async function Spotlight({ entity }: SpotlightProps) {
+  const name = (await getSpotlight(entity)) || "This week's star";
   const { headline, content } = getCopy(entity, name);
-
-  useEffect(() => {
-    if (!name) return;
-
-    // gaurd against numerous request
-    let active = true;
-    getImageFromWikipedia(name).then((url) => {
-      if (active) setImageUrl(url);
-    });
-
-    return () => {
-      active = false;
-    };
-  }, [name]);
 
   return (
     <UiSpotlight
       headline={headline}
       content={content}
       image={
-        imageUrl && <Image src={imageUrl} alt={name} fill sizes="(max-width: 48em) 100vw, 40vw" />
+        <Suspense fallback={<Skeleton animate />}>
+          <SpotlightImage name={name} />
+        </Suspense>
       }
     />
   );
 }
-
-export default observer(Spotlight);

@@ -12,12 +12,19 @@ export default meta;
 type Story = StoryObj<typeof Spotlight>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    headline: "Luke Skywalker",
+    content: [
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "Id, exercitationem numquam explicabo error voluptatem eius blanditiis ea eos aut.",
+      "Pariatur ipsum enim totam vero sit aliquam doloribus cumque similique quae?",
+    ],
+  },
 };
 
-export const LukeSkywalker: Story = {
+export const Image: Story = {
   args: {
-    name: "Luke Skywalker",
+    ...Default.args,
     image: <img src="https://placehold.co/300x300" alt="Luke Skywalker" />,
   },
 };

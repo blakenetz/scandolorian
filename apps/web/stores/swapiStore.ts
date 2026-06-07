@@ -2,7 +2,8 @@ import { makeAutoObservable } from "mobx";
 
 export type RideEntry = { name: string; type: "starship" | "vehicle" };
 
-export type SwapiKey = "people" | "planets" | "films" | "rides";
+export const swapiKeys = ["people", "planets", "films", "rides"] as const;
+export type SwapiKey = (typeof swapiKeys)[number];
 export type Spotlight = Record<SwapiKey, string>;
 
 export interface SwapiStoreData {

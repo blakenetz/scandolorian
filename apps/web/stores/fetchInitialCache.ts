@@ -1,6 +1,6 @@
 import { cacheLife } from "next/cache";
 import type { Films, People, Planets, Starships, Vehicles } from "@/types/swapi";
-import type { RideEntry, SwapiStoreData } from "./swapiStore";
+import type { RideEntry, SwapiKey, SwapiStoreData } from "./swapiStore";
 
 const baseUrl = "https://swapi.info/api";
 
@@ -50,4 +50,14 @@ export async function fetchInitialCache(): Promise<SwapiStoreData> {
       rides: randomId(rides),
     },
   };
+}
+
+export async function getSpotlight(entity: SwapiKey): Promise<string | undefined> {
+  // resuse `fetchInitialCache`, so it costs no extra network request
+  const data = await fetchInitialCache();
+
+  const id = data.spotlight[entity];
+  const entries = data[entity];
+  const value = entries.find(([entryId]) => entryId === id)?.[1];
+  return typeof value === "string" ? value : value?.name;
 }
