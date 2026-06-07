@@ -3,8 +3,7 @@ import { Skeleton } from "@mantine/core";
 import { Spotlight as UiSpotlight } from "@scandalorian/ui";
 import { getSpotlight } from "@/stores/fetchInitialCache";
 import Link from "next/link";
-
-import SpotlightImage from "./SpotlightImage";
+import WikipediaImage from "../wikipediaImage";
 import { routeMap, SwapiKey } from "@/types";
 
 interface SpotlightProps {
@@ -65,7 +64,7 @@ export default async function Spotlight({ entity }: SpotlightProps) {
       link={(children) => <Link href={route}>{children}</Link>}
       image={
         <Suspense fallback={<Skeleton animate />}>
-          <SpotlightImage name={name} />
+          <WikipediaImage name={name} />
         </Suspense>
       }
     />
