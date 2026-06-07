@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate-types": "tsx scripts/generateTypes.ts"
   },
   "dependencies": {
     "@mantine/core": "catalog:",
@@ -18,5 +19,8 @@
     "react": "catalog:",
     "react-dom": "catalog:"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "json-schema-to-typescript": "^15.0.4",
+    "tsx": "^4.22.4"
+  }
 }

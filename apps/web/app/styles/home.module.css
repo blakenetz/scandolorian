@@ -1,0 +1,5 @@
+.header {
+  text-align: center;
+  color: var(--mantine-color-red-9);
+  font-size: clamp(1rem, 10vw, 3rem);
+}

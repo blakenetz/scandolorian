@@ -1,11 +1,14 @@
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from "@mantine/core";
-import { Header } from "@scandalorian/ui";
+import "@mantine/core/styles.css";
 import { theme } from "@scandalorian/theme";
+import "@scandalorian/theme/styles.css";
+import { Header } from "@scandalorian/ui";
 import type { Metadata } from "next";
 import { Anton } from "next/font/google";
-import "@mantine/core/styles.css";
-import "@scandalorian/theme/styles.css";
-import Nav from "./components/Nav/Nav";
+import Nav from "./components/nav/nav";
+import { StoreProvider } from "./stores/StoreProvider";
+import { fetchInitialCache } from "./stores/fetchInitialCache";
+import classes from "./styles/layout.module.css";
 
 const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton" });
 
@@ -14,22 +17,27 @@ export const metadata: Metadata = {
   description: "Get the gossip on all your favorite Star Wars characters",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // initial fetch on the server
+  const initialData = await fetchInitialCache();
+
   return (
     <html lang="en" className={anton.variable} {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript />
       </head>
-      <body style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <body className={classes.root}>
         <MantineProvider theme={theme}>
-          <Header>
-            <Nav />
-          </Header>
-          <main>{children}</main>
+          <StoreProvider initialData={initialData}>
+            <Header>
+              <Nav />
+            </Header>
+            <main className={classes.main}>{children}</main>
+          </StoreProvider>
         </MantineProvider>
       </body>
     </html>

@@ -2,7 +2,7 @@
 
 import { Anchor } from "@mantine/core";
 import Link from "next/link";
-import classes from "./Nav.module.css";
+import classes from "./nav.module.css";
 
 const routes = ["home", "celebrities", "travel", "rides", "jawawood"];
 
