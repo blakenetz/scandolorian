@@ -11,3 +11,5 @@ export async function getImageFromWikipedia(name: string): Promise<string | unde
     console.warn("Unable to get image from wikipedia", error);
   }
 }
+
+export function capitalize() {}
