@@ -1,10 +1,5 @@
-import React from "react";
+import EntityLayout from "@/components/EntityLayout/EntityLayout";
 
-export default function JawawoodPage(): React.ReactElement {
-  return (
-    <>
-      <h1>Jawawood</h1>
-      <p>Everything you need to know about Jawawood — stub page.</p>
-    </>
-  );
+export default function JawawoodPage() {
+  return <EntityLayout entity="films" />;
 }

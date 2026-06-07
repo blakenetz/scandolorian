@@ -1,10 +1,5 @@
-import React from "react";
+import EntityLayout from "@/components/EntityLayout/EntityLayout";
 
-export default function TravelPage(): React.ReactElement {
-  return (
-    <>
-      <h1>Travel</h1>
-      <p>Travel stories and rumors — stub page.</p>
-    </>
-  );
+export default function TravelPage() {
+  return <EntityLayout entity="planets" />;
 }

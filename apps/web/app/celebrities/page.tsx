@@ -1,10 +1,5 @@
-import React from "react";
+import EntityLayout from "@/components/EntityLayout/EntityLayout";
 
-export default function CelebritiesPage(): React.ReactElement {
-  return (
-    <>
-      <h1>Celebrities</h1>
-      <p>List of scandalous celebs — stub page.</p>
-    </>
-  );
+export default function CelebritiesPage() {
+  return <EntityLayout entity="people" />;
 }
