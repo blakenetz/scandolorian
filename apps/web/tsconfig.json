@@ -19,7 +19,8 @@
     "**/*.tsx",
     "**/*.mts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "../../packages/components-library/src/components/WikimediaImage/WikipediaImage.tsx"
   ],
   "exclude": ["node_modules"]
 }

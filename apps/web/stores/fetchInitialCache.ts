@@ -1,16 +1,10 @@
 import { cacheLife } from "next/cache";
 import type { Films, People, Planets, Starships, Vehicles } from "@/types/swapi";
-import type { RideEntry, SwapiKey, SwapiStoreData } from "./swapiStore";
+import type { SwapiStoreData } from "./swapiStore";
+import { RideEntry, SwapiKey } from "@/types";
+import { extractSwapiId, randomId } from "@/utils";
 
 const baseUrl = "https://swapi.info/api";
-
-function extractId(url: string) {
-  return url.split("/").pop()!;
-}
-
-function randomId<T>(entries: [string, T][]) {
-  return entries[Math.floor(Math.random() * entries.length)][0];
-}
 
 // server only
 export async function fetchInitialCache(): Promise<SwapiStoreData> {
@@ -26,14 +20,14 @@ export async function fetchInitialCache(): Promise<SwapiStoreData> {
   ]);
 
   // id-name maps
-  const people = rawPeople.map<[string, string]>((p) => [extractId(p.url), p.name]);
-  const planets = rawPlanets.map<[string, string]>((p) => [extractId(p.url), p.name]);
-  const films = rawFilms.map<[string, string]>((f) => [extractId(f.url), f.title]);
+  const people = rawPeople.map<[string, string]>((p) => [extractSwapiId(p.url), p.name]);
+  const planets = rawPlanets.map<[string, string]>((p) => [extractSwapiId(p.url), p.name]);
+  const films = rawFilms.map<[string, string]>((f) => [extractSwapiId(f.url), f.title]);
   // starships and vehicles share enough in common that we merge them into rides.
   const rides = rawRides
     .flat()
     .map<[string, RideEntry]>((v) => [
-      extractId(v.url),
+      extractSwapiId(v.url),
       { name: v.name, type: v.url.includes("starships") ? "starship" : "vehicle" },
     ]);
 
@@ -50,6 +44,16 @@ export async function fetchInitialCache(): Promise<SwapiStoreData> {
       rides: randomId(rides),
     },
   };
+}
+
+// similar to above, but only a single resource
+export async function fetchResource<T>(resource: string, id: string): Promise<T | null> {
+  "use cache";
+  cacheLife("max"); // no variability in data updates
+
+  const res = await fetch(`${baseUrl}/${resource}/${id}`);
+  if (!res.ok) return null;
+  return (await res.json()) as T;
 }
 
 export async function getSpotlight(entity: SwapiKey): Promise<string | undefined> {

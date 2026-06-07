@@ -11,3 +11,10 @@ export const routeMap: Record<SwapiKey, string> = {
   rides: "rides",
 };
 export const routes = Object.values(routeMap);
+
+// routeMap inverted: a route segment -> the swapi collection it renders
+export const routeEntities = Object.fromEntries(
+  Object.entries(routeMap).map(([key, route]) => [route, key]),
+) as Record<string, SwapiKey>;
+// don't show these properties
+export const excludedProperties = ["name", "created", "edited", "url", "species"];
