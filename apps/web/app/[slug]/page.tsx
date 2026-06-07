@@ -1,14 +1,16 @@
 import { Suspense } from "react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Card, SimpleGrid, Skeleton, Text } from "@mantine/core";
 import Spotlight from "@/components/spotlight/spotlight";
-import SpotlightImage from "@/components/spotlight/SpotlightImage";
+import WikipediaImage from "@/components/wikipediaImage";
 import { fetchInitialCache } from "@/stores/fetchInitialCache";
-import { routeMap } from "@/types";
+import { routes, routeMap, swapiKeys } from "@/types";
 import type { RideEntry, SwapiKey } from "@/types";
-import classes from "./EntityLayout.module.css";
+import classes from "@/styles/slug.module.css";
 
-interface EntityLayoutProps {
-  entity: SwapiKey;
+interface EntityPageProps {
+  params: Promise<{ slug: string }>;
 }
 
 const gridHeaderMap: Record<SwapiKey, string> = {
@@ -28,7 +30,21 @@ const listHeaderMap: Record<SwapiKey, string> = {
 // type fix for rides
 const toName = (value: string | RideEntry) => (typeof value === "string" ? value : value.name);
 
-export default async function EntityLayout({ entity }: EntityLayoutProps) {
+export default async function EntityPage({ params }: EntityPageProps) {
+  const { slug } = await params;
+  // unknown routes 404
+  if (!routes.includes(slug)) {
+    console.debug("bad route", { slug });
+    notFound();
+  }
+
+  // find entity
+  const entity = swapiKeys.find((key) => routeMap[key] === slug);
+  if (!entity) {
+    console.debug("entity not found", { slug, entity });
+    notFound();
+  }
+
   // reuse the cached initial fetch, so listing pages cost no extra request
   const data = await fetchInitialCache();
   const entries = data[entity];
@@ -56,16 +72,18 @@ export default async function EntityLayout({ entity }: EntityLayoutProps) {
         {featured.map(([id, value]) => {
           const name = toName(value);
           return (
-            <Card key={id} withBorder padding={0} radius="md">
-              <div className={classes.imageWrap}>
-                <Suspense fallback={<Skeleton height="100%" animate />}>
-                  <SpotlightImage name={name} />
-                </Suspense>
-              </div>
-              <Text className={classes.name} p="sm">
-                {name}
-              </Text>
-            </Card>
+            <Link key={id} href={`/${title}/${id}`} className={classes.card}>
+              <Card withBorder padding={0} radius="md">
+                <div className={classes.imageWrap}>
+                  <Suspense fallback={<Skeleton height="100%" animate />}>
+                    <WikipediaImage name={name} />
+                  </Suspense>
+                </div>
+                <Text className={classes.name} p="sm">
+                  {name}
+                </Text>
+              </Card>
+            </Link>
           );
         })}
       </SimpleGrid>
@@ -78,7 +96,9 @@ export default async function EntityLayout({ entity }: EntityLayoutProps) {
       <ul className={classes.list}>
         {remaining.map(([id, value]) => (
           <li key={id} className={classes.listItem}>
-            {toName(value)}
+            <Link href={`/${title}/${id}`} className={classes.listLink}>
+              {toName(value)}
+            </Link>
           </li>
         ))}
       </ul>
