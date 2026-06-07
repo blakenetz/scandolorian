@@ -2,15 +2,14 @@
 
 import { Anchor } from "@mantine/core";
 import Link from "next/link";
-import { routeMap } from "@/types";
+import { routes } from "@/types";
 import classes from "./nav.module.css";
-
-const routes = ["home", ...Object.values(routeMap)];
 
 export default function Nav() {
   return (
     <nav>
-      {routes.map((route) => (
+      {/* include home */}
+      {["home", ...routes].map((route) => (
         <Anchor
           component={Link}
           key={route}

@@ -10,3 +10,4 @@ export const routeMap: Record<SwapiKey, string> = {
   films: "jawawood",
   rides: "rides",
 };
+export const routes = Object.values(routeMap);
