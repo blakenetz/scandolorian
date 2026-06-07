@@ -16,21 +16,40 @@ export interface SpotlightProps {
   headline: string;
   /** each item correlates to the text node of a paragraph element. key off of index, so don't sort */
   content: string[];
+  /** make items clickable by replicating dummy React.FC */
+  link?: (children: ReactNode) => ReactNode;
 }
 
-export function Spotlight({ headline, image, loading, fallback, content }: SpotlightProps) {
+function SpotlightImage({
+  loading,
+  image,
+  fallback,
+  link,
+}: Pick<SpotlightProps, "loading" | "image" | "fallback" | "link">) {
+  if (loading) return <Skeleton animate />;
+
+  // only wrap image and user provided fallback
+  if (link && (image || fallback)) return link(image ?? fallback);
+
+  return <img src={spotlightFallback} alt="" />;
+}
+
+export function Spotlight({
+  headline,
+  image,
+  loading,
+  fallback,
+  content,
+  link = (child) => child,
+}: SpotlightProps) {
   return (
     <article className={classes.spotlight}>
       <div className={classes.media}>
-        {loading ? (
-          <Skeleton animate />
-        ) : (
-          (image ?? fallback ?? <img src={spotlightFallback} alt="" />)
-        )}
+        <SpotlightImage loading={loading} image={image} fallback={fallback} link={link} />
       </div>
 
       <div className={classes.content}>
-        <h2 className={classes.headline}>{headline}</h2>
+        <h2 className={classes.headline}>{link(headline)}</h2>
         <div className={classes.body}>
           {content.map((p, i) => (
             <p key={i}>{p}</p>

@@ -1,10 +1,5 @@
+import { RideEntry, Spotlight, SwapiKey } from "@/types";
 import { makeAutoObservable } from "mobx";
-
-export type RideEntry = { name: string; type: "starship" | "vehicle" };
-
-export const swapiKeys = ["people", "planets", "films", "rides"] as const;
-export type SwapiKey = (typeof swapiKeys)[number];
-export type Spotlight = Record<SwapiKey, string>;
 
 export interface SwapiStoreData {
   people: [string, string][];

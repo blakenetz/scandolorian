@@ -29,4 +29,9 @@ export const Image: Story = {
   },
 };
 
-export const Empty: Story = {};
+export const Link: Story = {
+  args: {
+    ...Default.args,
+    link: (v) => <a href="#">{v}</a>,
+  },
+};

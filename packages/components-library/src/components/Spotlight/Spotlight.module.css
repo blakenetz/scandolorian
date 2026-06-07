@@ -8,25 +8,14 @@
 .media {
   position: relative;
   min-height: 100%;
+  overflow: hidden;
 }
 
-.media > * {
+.media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--mantine-radius-sm);
-}
-
-.placeholder {
-  min-height: 24rem;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--mantine-color-dark-6),
-    var(--mantine-color-dark-6) 10px,
-    var(--mantine-color-dark-5) 10px,
-    var(--mantine-color-dark-5) 20px
-  );
-  border: 2px solid var(--mantine-color-dark-4);
 }
 
 .content {
@@ -35,20 +24,20 @@
   gap: var(--mantine-spacing-sm);
 }
 
-.kicker {
-  margin: 0;
-  color: var(--mantine-primary-color-4);
-  font-size: var(--mantine-font-size-xs);
-  font-weight: var(--mantine-font-weight-bold);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
 .headline {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3rem);
   text-transform: uppercase;
   line-height: 1.05;
+}
+
+/* reset anchor styles */
+.headline a,
+.media a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  display: block;
 }
 
 .body {
