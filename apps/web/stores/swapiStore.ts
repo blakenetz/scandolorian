@@ -2,11 +2,15 @@ import { makeAutoObservable } from "mobx";
 
 export type RideEntry = { name: string; type: "starship" | "vehicle" };
 
+export type SwapiKey = "people" | "planets" | "films" | "rides";
+export type Spotlight = Record<SwapiKey, string>;
+
 export interface SwapiStoreData {
   people: [string, string][];
   planets: [string, string][];
   films: [string, string][];
   rides: [string, RideEntry][];
+  spotlight: Spotlight;
 }
 
 export class SwapiStore {
@@ -15,6 +19,7 @@ export class SwapiStore {
   planets = new Map<string, string>();
   films = new Map<string, string>();
   rides = new Map<string, RideEntry>();
+  spotlight: Spotlight | null = null;
   loaded = false;
 
   constructor(initialData?: SwapiStoreData) {
@@ -27,6 +32,12 @@ export class SwapiStore {
     this.planets = new Map(initialData.planets);
     this.films = new Map(initialData.films);
     this.rides = new Map(initialData.rides);
+    this.spotlight = initialData.spotlight;
     this.loaded = true;
+  }
+
+  getEntity<K extends SwapiKey>(type: K, id: string) {
+    // extra-type inferrence for rides
+    return (this[type] as Map<string, K extends "rides" ? RideEntry : string>).get(id);
   }
 }

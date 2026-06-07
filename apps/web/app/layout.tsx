@@ -5,10 +5,10 @@ import "@scandalorian/theme/styles.css";
 import { Header } from "@scandalorian/ui";
 import type { Metadata } from "next";
 import { Anton } from "next/font/google";
-import Nav from "./components/nav/nav";
-import { StoreProvider } from "./stores/StoreProvider";
-import { fetchInitialCache } from "./stores/fetchInitialCache";
-import classes from "./styles/layout.module.css";
+import Nav from "@/components/nav/nav";
+import { StoreProvider } from "@/stores/StoreProvider";
+import { fetchInitialCache } from "@/stores/fetchInitialCache";
+import classes from "@/styles/layout.module.css";
 
 const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton" });
 
