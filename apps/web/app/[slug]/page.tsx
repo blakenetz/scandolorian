@@ -88,20 +88,26 @@ export default async function EntityPage({ params }: EntityPageProps) {
         })}
       </SimpleGrid>
 
-      <div>
-        <h3 className={classes.subheader}>{listHeader}</h3>
-        <p className={classes.listSubtext}>Click into each element to read exclusive content!</p>
-      </div>
+      {Boolean(remaining) && (
+        <>
+          <div>
+            <h3 className={classes.subheader}>{listHeader}</h3>
+            <p className={classes.listSubtext}>
+              Click into each element to read exclusive content!
+            </p>
+          </div>
 
-      <ul className={classes.list}>
-        {remaining.map(([id, value]) => (
-          <li key={id} className={classes.listItem}>
-            <Link href={`/${title}/${id}`} className={classes.listLink}>
-              {toName(value)}
-            </Link>
-          </li>
-        ))}
-      </ul>
+          <ul className={classes.list}>
+            {remaining.map(([id, value]) => (
+              <li key={id} className={classes.listItem}>
+                <Link href={`/${title}/${id}`} className={classes.listLink}>
+                  {toName(value)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 }

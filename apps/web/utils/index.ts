@@ -1,4 +1,4 @@
-import { SwapiKey } from "@/types";
+import { excludedProperties, SwapiKey } from "@/types";
 
 export function getCopy(entity: SwapiKey, name: string) {
   switch (entity) {
@@ -49,6 +49,24 @@ export function isDate(value: unknown) {
 
 export function extractSwapiId(url: string) {
   return url.split("/").pop()!;
+}
+
+// pull swapi ids out of an array of resource urls
+export function extractIds(urls: string[]) {
+  return urls.filter((v) => URL.canParse(v)).map((v) => extractSwapiId(v));
+}
+
+export function filterStats(record: object) {
+  return Object.entries(record).reduce<{ label: string; value: string }[]>((acc, [key, value]) => {
+    // label check
+    if (excludedProperties.includes(key)) return acc;
+
+    // value check
+    if (!Array.isArray(value) && !URL.canParse(value) && !isDate(value) && value !== "n/a") {
+      acc.push({ label: key.replace(/_/g, " "), value: value });
+    }
+    return acc;
+  }, []);
 }
 
 export function randomId<T>(entries: [string, T][]) {
