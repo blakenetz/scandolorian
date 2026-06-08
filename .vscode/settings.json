@@ -1,9 +1,19 @@
 {
-  "cSpell.words": [
-    "Scandalorian",
-    "Scandalorian"
-  ],
+  "cSpell.words": ["Scandalorian", "starships", "Swapi"],
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file"
+  "editor.formatOnSaveMode": "file",
+  "cssVariables.lookupFiles": [
+    "**/node_modules/@mantine/core/**/*.css",
+    "**/node_modules/postcss-preset-mantine/**/*.css"
+  ],
+  "[css]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  }
 }

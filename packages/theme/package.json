@@ -3,7 +3,8 @@
   "private": true,
   "main": "./src/theme.ts",
   "exports": {
-    ".": "./src/theme.ts"
+    ".": "./src/theme.ts",
+    "./styles.css": "./src/styles.css"
   },
   "peerDependencies": {
     "@mantine/core": "catalog:"

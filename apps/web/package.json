@@ -5,19 +5,22 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate-types": "tsx scripts/generateTypes.ts"
   },
   "dependencies": {
     "@mantine/core": "catalog:",
     "@mantine/hooks": "catalog:",
-    "@scandalorian/ui": "workspace:*",
     "@scandalorian/theme": "workspace:*",
+    "@scandalorian/ui": "workspace:*",
+    "mobx": "^6.16.0",
+    "mobx-react-lite": "^4.1.1",
     "next": "16.2.7",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "json-schema-to-typescript": "^15.0.4",
+    "tsx": "^4.22.4"
   }
 }

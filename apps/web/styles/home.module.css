@@ -1,0 +1,11 @@
+.header {
+  text-transform: uppercase;
+  color: var(--mantine-color-red-9);
+  font-size: clamp(1rem, 10vw, 3rem);
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mantine-spacing-md);
+}

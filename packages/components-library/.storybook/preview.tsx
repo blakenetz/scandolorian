@@ -5,6 +5,7 @@ import {
   MantineProvider
 } from '@mantine/core';
 import '@mantine/core/styles.css';
+import '@scandalorian/theme/styles.css'
 
 
 const preview: Preview = {
