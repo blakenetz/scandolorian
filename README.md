@@ -92,4 +92,4 @@ The SB components is "render-agnostic". By this I mean, they aren't tied to a SS
 
 ## Commentary
 
-I know the use of AI was forbidden, so I want to be honest about my AI usage. I used a couple different agents/tools to generate the copy, prototyping and while ironing out some of the config files.
+I know the use of AI was forbidden, so I want to be honest about my AI usage. I used a couple different agents/tools to generate the copy, prototyping, CSS creation, and while ironing out some of the config files. I did touch ever piece of code in this repo.
