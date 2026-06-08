@@ -63,6 +63,12 @@ async function fetchEntity(entity: SwapiKey, id: string): Promise<Entity | null>
   }
 }
 
+// fully prerender every entity detail page
+export async function generateStaticParams() {
+  const data = await fetchInitialCache();
+  return swapiKeys.flatMap((key) => data[key].map(([id]) => ({ slug: routeMap[key], id })));
+}
+
 export default async function DetailPage({
   params,
 }: {

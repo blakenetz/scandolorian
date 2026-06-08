@@ -30,6 +30,11 @@ const listHeaderMap: Record<SwapiKey, string> = {
 // type fix for rides
 const toName = (value: string | RideEntry) => (typeof value === "string" ? value : value.name);
 
+// fully prerender all known routes
+export function generateStaticParams() {
+  return routes.map((slug) => ({ slug }));
+}
+
 export default async function EntityPage({ params }: EntityPageProps) {
   const { slug } = await params;
   // unknown routes 404
